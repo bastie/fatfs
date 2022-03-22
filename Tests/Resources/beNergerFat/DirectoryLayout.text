@@ -1,0 +1,172 @@
+total 1486
+      1   32 drwxrwxrwx@ 1 admin  staff    16K 21 Mär 11:49 .
+3257136    0 drwxr-xr-x  5 root   wheel   160B 21 Mär 11:38 ..
+     12 1436 -rwxrwxrwx@ 1 admin  staff   718K 21 Mär 11:44 .VolumeIcon.icns
+   1448    8 -rwxrwxrwx  1 admin  staff   4,0K 21 Mär 11:45 ._.
+      4    8 -rwxrwxrwx  1 admin  staff   4,0K 21 Mär 11:43 ._.VolumeIcon.icns
+      3    1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:38 .fseventsd
+   1456    1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:51 git-ci
+
+/Volumes/BE_NERGER/.fseventsd:
+total 34
+3  1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:38 .
+1 32 drwxrwxrwx@ 1 admin  staff    16K 21 Mär 11:49 ..
+2  1 -rwxrwxrwx  1 admin  staff    36B 21 Mär 11:38 fseventsd-uuid
+
+/Volumes/BE_NERGER/git-ci:
+total 50
+1456  1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:51 .
+   1 32 drwxrwxrwx@ 1 admin  staff    16K 21 Mär 11:49 ..
+1457  2 drwxrwxrwx  1 admin  staff   1,0K 21 Mär 11:51 .git
+1569  5 -rwxrwxrwx  1 admin  staff   2,2K 21 Mär 11:51 .gitignore
+1574  3 -rwxrwxrwx  1 admin  staff   1,0K 21 Mär 11:51 LICENSE
+1577  2 -rwxrwxrwx  1 admin  staff   811B 21 Mär 11:51 Package.swift
+1579  3 -rwxrwxrwx  1 admin  staff   1,2K 21 Mär 11:51 README.md
+1567  1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:51 Sources
+1591  1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:51 Tests
+
+/Volumes/BE_NERGER/git-ci/.git:
+total 16
+1457 2 drwxrwxrwx  1 admin  staff   1,0K 21 Mär 11:51 .
+1456 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:51 ..
+1562 1 -rwxrwxrwx  1 admin  staff    21B 21 Mär 11:50 HEAD
+1568 1 -rwxrwxrwx  1 admin  staff   308B 21 Mär 11:51 config
+1460 1 -rwxrwxrwx  1 admin  staff    73B 21 Mär 11:49 description
+1461 3 drwxrwxrwx  1 admin  staff   1,5K 21 Mär 11:49 hooks
+1597 2 -rwxrwxrwx  1 admin  staff   766B 21 Mär 11:51 index
+1458 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:49 info
+1556 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:51 logs
+1525 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:50 objects
+1552 1 -rwxrwxrwx  1 admin  staff   169B 21 Mär 11:50 packed-refs
+1516 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:50 refs
+
+/Volumes/BE_NERGER/git-ci/.git/hooks:
+total 57
+1461  3 drwxrwxrwx  1 admin  staff   1,5K 21 Mär 11:49 .
+1457  2 drwxrwxrwx  1 admin  staff   1,0K 21 Mär 11:51 ..
+1478  1 -rwxrwxrwx  1 admin  staff   478B 21 Mär 11:49 applypatch-msg.sample
+1462  2 -rwxrwxrwx  1 admin  staff   896B 21 Mär 11:49 commit-msg.sample
+1480 10 -rwxrwxrwx  1 admin  staff   4,5K 21 Mär 11:49 fsmonitor-watchman.sample
+1495  1 -rwxrwxrwx  1 admin  staff   189B 21 Mär 11:49 post-update.sample
+1497  1 -rwxrwxrwx  1 admin  staff   424B 21 Mär 11:49 pre-applypatch.sample
+1474  4 -rwxrwxrwx  1 admin  staff   1,6K 21 Mär 11:49 pre-commit.sample
+1496  1 -rwxrwxrwx  1 admin  staff   416B 21 Mär 11:49 pre-merge-commit.sample
+1499  3 -rwxrwxrwx  1 admin  staff   1,3K 21 Mär 11:49 pre-push.sample
+1464 10 -rwxrwxrwx  1 admin  staff   4,8K 21 Mär 11:49 pre-rebase.sample
+1490  2 -rwxrwxrwx  1 admin  staff   544B 21 Mär 11:49 pre-receive.sample
+1492  3 -rwxrwxrwx  1 admin  staff   1,5K 21 Mär 11:49 prepare-commit-msg.sample
+1510  6 -rwxrwxrwx  1 admin  staff   2,7K 21 Mär 11:49 push-to-checkout.sample
+1502  8 -rwxrwxrwx  1 admin  staff   3,6K 21 Mär 11:49 update.sample
+
+/Volumes/BE_NERGER/git-ci/.git/info:
+total 4
+1458 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:49 .
+1457 2 drwxrwxrwx  1 admin  staff   1,0K 21 Mär 11:51 ..
+1459 1 -rwxrwxrwx  1 admin  staff   240B 21 Mär 11:49 exclude
+
+/Volumes/BE_NERGER/git-ci/.git/logs:
+total 5
+1556 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:51 .
+1457 2 drwxrwxrwx  1 admin  staff   1,0K 21 Mär 11:51 ..
+1564 1 -rwxrwxrwx  1 admin  staff   209B 21 Mär 11:51 HEAD
+1557 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:51 refs
+
+/Volumes/BE_NERGER/git-ci/.git/logs/refs:
+total 4
+1557 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:51 .
+1556 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:51 ..
+1565 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:51 heads
+1558 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:50 remotes
+
+/Volumes/BE_NERGER/git-ci/.git/logs/refs/heads:
+total 3
+1565 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:51 .
+1557 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:51 ..
+1566 1 -rwxrwxrwx  1 admin  staff   209B 21 Mär 11:51 main
+
+/Volumes/BE_NERGER/git-ci/.git/logs/refs/remotes:
+total 3
+1558 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:50 .
+1557 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:51 ..
+1559 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:50 origin
+
+/Volumes/BE_NERGER/git-ci/.git/logs/refs/remotes/origin:
+total 3
+1559 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:50 .
+1558 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:50 ..
+1560 1 -rwxrwxrwx  1 admin  staff   209B 21 Mär 11:50 HEAD
+
+/Volumes/BE_NERGER/git-ci/.git/objects:
+total 6
+1525 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:50 .
+1457 2 drwxrwxrwx  1 admin  staff   1,0K 21 Mär 11:51 ..
+1528 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:50 info
+1527 2 drwxrwxrwx  1 admin  staff   1,0K 21 Mär 11:51 pack
+
+/Volumes/BE_NERGER/git-ci/.git/objects/info:
+total 2
+1528 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:50 .
+1525 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:50 ..
+
+/Volumes/BE_NERGER/git-ci/.git/objects/pack:
+total 23
+1527  2 drwxrwxrwx  1 admin  staff   1,0K 21 Mär 11:51 .
+1525  1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:50 ..
+1546  4 -rwxrwxrwx  1 admin  staff   1,9K 21 Mär 11:50 pack-6ba5e65218d277b2ae901b35f856d75763131e46.idx
+1530 16 -rwxrwxrwx  1 admin  staff   7,6K 21 Mär 11:50 pack-6ba5e65218d277b2ae901b35f856d75763131e46.pack
+
+/Volumes/BE_NERGER/git-ci/.git/refs:
+total 6
+1516 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:50 .
+1457 2 drwxrwxrwx  1 admin  staff   1,0K 21 Mär 11:51 ..
+1517 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:51 heads
+1554 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:50 remotes
+1518 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:49 tags
+
+/Volumes/BE_NERGER/git-ci/.git/refs/heads:
+total 3
+1517 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:51 .
+1516 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:50 ..
+1563 1 -rwxrwxrwx  1 admin  staff    41B 21 Mär 11:51 main
+
+/Volumes/BE_NERGER/git-ci/.git/refs/remotes:
+total 3
+1554 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:50 .
+1516 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:50 ..
+1555 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:50 origin
+
+/Volumes/BE_NERGER/git-ci/.git/refs/remotes/origin:
+total 3
+1555 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:50 .
+1554 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:50 ..
+1561 1 -rwxrwxrwx  1 admin  staff    30B 21 Mär 11:50 HEAD
+
+/Volumes/BE_NERGER/git-ci/.git/refs/tags:
+total 2
+1518 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:49 .
+1516 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:50 ..
+
+/Volumes/BE_NERGER/git-ci/Sources:
+total 4
+1567 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:51 .
+1456 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:51 ..
+1582 1 -rwxrwxrwx  1 admin  staff   173B 21 Mär 11:51 CIdoIt.exe
+1583 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:51 git-ci
+
+/Volumes/BE_NERGER/git-ci/Sources/git-ci:
+total 9
+1583 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:51 .
+1567 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:51 ..
+1584 7 -rwxrwxrwx  1 admin  staff   3,5K 21 Mär 11:51 main.swift
+
+/Volumes/BE_NERGER/git-ci/Tests:
+total 3
+1591 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:51 .
+1456 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:51 ..
+1592 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:51 CITests
+
+/Volumes/BE_NERGER/git-ci/Tests/CITests:
+total 6
+1592 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:51 .
+1591 1 drwxrwxrwx  1 admin  staff   512B 21 Mär 11:51 ..
+1593 4 -rwxrwxrwx  1 admin  staff   1,7K 21 Mär 11:51 CITests.swift

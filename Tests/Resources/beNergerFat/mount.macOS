@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+# mount raw image created from
+# sudo dd if=/dev/disk2 of=beNerger.img.dd bs=2m   
+
+hdiutil attach -imagekey diskimage-class=CRawDiskImage beNerger.img.dd
+
+#EOF
