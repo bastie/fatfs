@@ -29,61 +29,24 @@ public struct FAT32 {
             if let handle : FileHandle = try? .init(forReadingFrom: URL(fileURLWithPath: image)) {
                 
                 print ("\(handle)")
+                let nextSector = try? handle.read(upToCount: 512)
+                
+                let sector_1 = EmptySector.getInstance(nextSector)
 
-                let bootcode = try? handle.read(upToCount: 446)
-                let partitions = [
-                    try? handle.read(upToCount: 16),
-                    try? handle.read(upToCount: 16),
-                    try? handle.read(upToCount: 16),
-                    try? handle.read(upToCount: 16)
-                ]
-                let MBRSanityCheck = try? handle.readAsUInt16(littleEndian: true)
-                guard 43605 == MBRSanityCheck else { // same as 55AA
-                    // - TODO: TODO throw error
-                    return
-                }
-                
-                printData(partitions[0])
-                
-                switch partitions[0]![4] {
-                case 11 : // 0B
-                    fallthrough
-                case 12 : // 0C
-                    print ("seems like FAT32")
-                default:
-                    guard false else {
-                        print("unsupported FAT information")
-                        return
-                    }
-                }
-                
-                let lbaBeginArray = [
-                    partitions[0]![8],
-                    partitions[0]![9],
-                    partitions[0]![10],
-                    partitions[0]![11]
-                ]
-                let lbaBegin = NumberHelper.asUInt32(data: lbaBeginArray)
-                print("LBA Begin: \(lbaBegin)")
-
-                let countOfSectorsArray = [
-                    partitions[0]![12],
-                    partitions[0]![13],
-                    partitions[0]![14],
-                    partitions[0]![15]
-                ]
-                let countOfSectors = NumberHelper.asUInt32(data: countOfSectorsArray)
-                print ("Sector count: \(countOfSectors)")
-                
                 // OK - I read 1 sector and the lbaBegin get information from absolute sector offset I need to look at - and yes a sector ist 512 bytes long
-                let offsetToRead = Int(512 * lbaBegin)
-                var skip = offsetToRead-512 // 512 bytes (Bootblock) we read before
-                
-                let _ = try? handle.read(upToCount: skip)
-                let next = try? handle.read(upToCount: 512)
-                
-                printData(next)
-                
+                switch sector_1 {
+                case let sector as Fat32Bootsector :
+                    let offsetToRead = Int(512 * sector.lbaBegin)
+                    var skip = offsetToRead-512 // 512 bytes (Bootblock) we read before
+                    
+                    let _ = try? handle.read(upToCount: skip)
+                    let next = try? handle.read(upToCount: 512)
+                    
+                    printData(next)
+                default :
+                    print ("Unknown sector type")
+
+                }
     /*            print ("1: \(String(format:"%02X", UInt8 (MBRSanityCheck![0])))")
                 print ("2: \(String(format:"%02X", UInt8 (MBRSanityCheck![1])))")
     */
