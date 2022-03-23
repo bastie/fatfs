@@ -31,13 +31,18 @@ public struct FAT32 {
                 print ("\(handle)")
                 let nextSector = try? handle.read(upToCount: 512)
                 
-                let sector_1 = EmptySector.getInstance(nextSector)
+                let sector_1 = SectorFactory.getInstance(nextSector)
 
                 // OK - I read 1 sector and the lbaBegin get information from absolute sector offset I need to look at - and yes a sector ist 512 bytes long
                 switch sector_1 {
                 case let sector as Fat32Bootsector :
+                    print ("Fat32Bootsector detected")
+                    print ("  Sector count: \(sector.countOfSector)")
+                    print ("  LBA begin:    \(sector.lbaBegin)")
+                    
+
                     let offsetToRead = Int(512 * sector.lbaBegin)
-                    var skip = offsetToRead-512 // 512 bytes (Bootblock) we read before
+                    let skip = offsetToRead-512 // 512 bytes (Bootblock) we read before
                     
                     let _ = try? handle.read(upToCount: skip)
                     let next = try? handle.read(upToCount: 512)
@@ -47,28 +52,6 @@ public struct FAT32 {
                     print ("Unknown sector type")
 
                 }
-    /*            print ("1: \(String(format:"%02X", UInt8 (MBRSanityCheck![0])))")
-                print ("2: \(String(format:"%02X", UInt8 (MBRSanityCheck![1])))")
-    */
-                
-    /*            let available = handle.availableData // kill the RAM
-                print (available.count)
-
-                let size = 512
-                var i = size
-                for _ in available {
-                    if i == 0{
-                        break
-                    }
-                    let x =  String(format:"%02X", UInt(available[size-i]))
-                    print ("\(x) ", terminator: "")
-                    if i % 16 == 0 {
-                        print ("")
-                    }
-                    i -= 1
-                }
-                
-     */
             }
             else {
                 print ("shit")

@@ -69,13 +69,16 @@ struct Fat32Bootsector : Sector {
             return nil
         }
         
-        printData(partitions[0])
+        #if DEBUG
+            printData(partitions[0])
+        #endif
         
+        // - TODO: next switch is bad
         switch partitions[0][4] {
         case 11 : // 0B
             fallthrough
         case 12 : // 0C
-            print ("seems like FAT32")
+            break // ALL OK
         default:
             guard false else {
                 print("unsupported FAT information")
@@ -90,7 +93,6 @@ struct Fat32Bootsector : Sector {
             partitions[0][11]
         ]
         let lbaBegin = NumberHelper.asUInt32(data: lbaBeginArray)
-        print("LBA Begin: \(lbaBegin)")
 
         let countOfSectorsArray = [
             partitions[0][12],
@@ -99,8 +101,6 @@ struct Fat32Bootsector : Sector {
             partitions[0][15]
         ]
         let countOfSectors = NumberHelper.asUInt32(data: countOfSectorsArray)
-        print ("Sector count: \(countOfSectors)")
-        
 
         var result : Fat32Bootsector = .init()
         result.content = rawContent
@@ -122,9 +122,18 @@ struct EmptySector : Sector {
         return result
     }
 }
+struct SectorFactory : Sector{
+    var content: Data
+    
+    static func canHandle(_ rawContent: Data) -> Sector? {
+        return nil
+    }
+    
+    
+}
 
 
-
+#if DEBUG
 extension Sector {
     static func printData (_ value : Data?) {
         if let data = value {
@@ -146,3 +155,4 @@ extension Sector {
     }
 
 }
+#endif
