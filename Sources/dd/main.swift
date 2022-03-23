@@ -8,6 +8,7 @@
 import fatfs
 import Foundation
 
+
 print ("\(CommandLine.arguments[0]) v0.1")
 
 let maybeImageName = CommandLine.arguments.count < 2 ? "./Tests/Resources/beNergerFat/beNerger.img.dd" : CommandLine.arguments[1]
