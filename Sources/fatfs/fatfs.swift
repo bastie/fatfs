@@ -139,3 +139,26 @@ extension FAT32 {
 }
 
 
+// TODO: later check to replace shell scripts
+
+prefix operator |>
+@available(macOS 10.13, *)
+prefix func |> (what: String) -> Int {
+    let all = what.split(separator: " ",maxSplits: 1)
+    let task = Process ()
+    task.executableURL = URL (fileURLWithPath: String(all[0]))
+    let params = all.count > 1 ? [String(all [1])] : []
+    task.arguments = params
+    
+    var result = 0
+    do {
+        try task.run()
+        task.waitUntilExit()
+        result = Int(task.terminationStatus)
+    }
+    catch {
+        result = 128
+    }
+    return result
+}
+
