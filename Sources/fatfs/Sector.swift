@@ -1,46 +1,38 @@
 //
-//  File.swift
+//  Sector.swift
 //  
 //
 //  Created by Sebastian Ritter on 23.03.22.
 //
 
 import Foundation
+///
+/// Blub
+///
 
+
+/// A sector of data for raw file access with can use
 protocol Sector {
     
     var content : Data {get set}
     
-    /// Each ``Sector`` a factory implementation to create new instance from raw byte array.
+    /// Each ``Sector`` has this factory implementation to create new instance from raw byte array but create only for accepted data a instance.
+    ///
+    /// Do use the ``StaticSectorFactory`` instead of this function.
+    ///
     /// - Parameter rawContent: ``rawContent`` is a byte array
     /// - Returns: new instance
     static func canHandle (_ rawContent : Data) -> Sector?
 }
 
-extension Sector {
-    static func getInstance (_ rawContent : Data?) -> Sector? {
-        guard let _ = rawContent else {
-            return EmptySector()
-        }
-        
-        let impl : [Sector] = [
-            Fat32Bootsector()
-        ]
-        for instance in impl {
-            if let result = type(of: instance).canHandle(rawContent!) {
-                return result
-            }
-        }
-        return EmptySector ()
-    }
-}
-
+///
+/// A Fat32Bootsector implementation
 struct Fat32Bootsector : Sector {
     var content : Data
     var countOfSector : UInt32
     var lbaBegin : UInt32
     
-    fileprivate init () {
+    internal init () {
         content = Data()
         countOfSector = 0
         lbaBegin = 0
@@ -81,7 +73,9 @@ struct Fat32Bootsector : Sector {
             break // ALL OK
         default:
             guard false else {
-                print("unsupported FAT information")
+                #if debug
+                print("This is not a FAT32 boot sector")
+                #endif 
                 return nil
             }
         }
@@ -112,24 +106,18 @@ struct Fat32Bootsector : Sector {
     
 }
 
-
+/// A empty sector implementation
 struct EmptySector : Sector {
     
     internal var content : Data = Data()
     
     static func canHandle(_ rawContent: Data) -> Sector? {
+        guard rawContent.count == 0 else {
+            return nil
+        }
         let result : EmptySector = .init()
         return result
     }
-}
-struct SectorFactory : Sector{
-    var content: Data
-    
-    static func canHandle(_ rawContent: Data) -> Sector? {
-        return nil
-    }
-    
-    
 }
 
 

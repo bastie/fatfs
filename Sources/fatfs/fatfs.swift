@@ -31,26 +31,26 @@ public struct FAT32 {
                 print ("\(handle)")
                 let nextSector = try? handle.read(upToCount: 512)
                 
-                let sector_1 = SectorFactory.getInstance(nextSector)
+                let _ = StaticSectorFactory.register(EmptySector(), at: 0)
+                let _  = StaticSectorFactory.register(Fat32Bootsector(), at: -1)
+                var sector = StaticSectorFactory.getInstance(nextSector)
+                printInfo(sector)
 
                 // OK - I read 1 sector and the lbaBegin get information from absolute sector offset I need to look at - and yes a sector ist 512 bytes long
-                switch sector_1 {
-                case let sector as Fat32Bootsector :
-                    print ("Fat32Bootsector detected")
-                    print ("  Sector count: \(sector.countOfSector)")
-                    print ("  LBA begin:    \(sector.lbaBegin)")
-                    
-
-                    let offsetToRead = Int(512 * sector.lbaBegin)
+                if let fat32Boot = sector as? Fat32Bootsector {
+                    let offsetToRead = Int(512 * fat32Boot.lbaBegin)
                     let skip = offsetToRead-512 // 512 bytes (Bootblock) we read before
                     
                     let _ = try? handle.read(upToCount: skip)
                     let next = try? handle.read(upToCount: 512)
                     
                     printData(next)
-                default :
-                    print ("Unknown sector type")
-
+                    sector = StaticSectorFactory.getInstance(next)
+                    printInfo(sector)
+                    sector = StaticSectorFactory.getInstance(Data())
+                    printInfo(sector)
+                    sector = StaticSectorFactory.getInstance(nil)
+                    printInfo(sector)
                 }
             }
             else {
@@ -62,6 +62,27 @@ public struct FAT32 {
     public private(set) var text = "Hello, World!"
 
     public init() {
+    }
+    
+    func printInfo (_ sector : Sector?) {
+        guard let _ = sector else {
+            print ("No sector implementation for detection")
+            return
+        }
+        switch sector {
+        case let sector as Fat32Bootsector :
+            print ("Fat32Bootsector detected")
+            print ("  Sector count: \(sector.countOfSector)")
+            print ("  LBA begin:    \(sector.lbaBegin)")
+
+        case _ as EmptySector :
+            print ("Empty sector detected")
+            
+        default :
+            print ("Unknown sector detected")
+
+        }
+
     }
 }
 
@@ -83,8 +104,8 @@ struct NumberHelper {
     
     public static func asUInt16 (data bytes : Data, _ littleEndian : Bool = true) -> UInt16 {
         return littleEndian ?
-        UInt16(littleEndian: bytes.withUnsafeBytes { $0.pointee }) :
-        UInt16(bigEndian: bytes.withUnsafeBytes { $0.pointee })
+        UInt16(littleEndian: bytes.withUnsafeBytes { $0.load(as: UInt16.self) }) :
+        UInt16(bigEndian: bytes.withUnsafeBytes { $0.load(as: UInt16.self) })
     }
         
     public static func asUInt16 (data bytes : [UInt8]) -> UInt16 {
