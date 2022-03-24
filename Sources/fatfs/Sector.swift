@@ -7,9 +7,10 @@
 
 import Foundation
 ///
-/// Blub
+/// Structures for sectores
 ///
 
+// MARK: Sector Protocol
 
 /// A sector of data for raw file access with can use
 protocol Sector {
@@ -24,6 +25,28 @@ protocol Sector {
     /// - Returns: new instance
     static func canHandle (_ rawContent : Data) -> Sector?
 }
+
+
+// MARK: FAT12
+
+struct Fat12Bootsector : Sector {
+    var content: Data
+    
+    internal init () {
+        content = Data()
+    }
+    
+    static func canHandle(_ rawContent: Data) -> Sector? {
+        guard rawContent.count == 512 else {
+            return nil
+        }
+        return nil
+    }
+    
+    
+}
+
+// MARK: FAT32 boot sector implementation
 
 ///
 /// A Fat32Bootsector implementation
@@ -106,6 +129,8 @@ struct Fat32Bootsector : Sector {
     
 }
 
+// MARK: EmptySector implementation
+
 /// A empty sector implementation
 struct EmptySector : Sector {
     
@@ -120,6 +145,7 @@ struct EmptySector : Sector {
     }
 }
 
+// MARK: DEBUG extenstion
 
 #if DEBUG
 extension Sector {

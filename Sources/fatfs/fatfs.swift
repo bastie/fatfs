@@ -32,7 +32,8 @@ public struct FAT32 {
                 let nextSector = try? handle.read(upToCount: 512)
                 
                 let _ = StaticSectorFactory.register(EmptySector(), at: 0)
-                let _  = StaticSectorFactory.register(Fat32Bootsector(), at: -1)
+                let _ = StaticSectorFactory.register(Fat32Bootsector(), at: -1)
+                let _ = StaticSectorFactory.register(Fat12Bootsector(), at: 99)
                 var sector = StaticSectorFactory.getInstance(nextSector)
                 printInfo(sector)
 
@@ -45,6 +46,9 @@ public struct FAT32 {
                     let next = try? handle.read(upToCount: 512)
                     
                     printData(next)
+                    
+                    print ("========================================")
+                    
                     sector = StaticSectorFactory.getInstance(next)
                     printInfo(sector)
                     sector = StaticSectorFactory.getInstance(Data())
@@ -74,6 +78,9 @@ public struct FAT32 {
             print ("Fat32Bootsector detected")
             print ("  Sector count: \(sector.countOfSector)")
             print ("  LBA begin:    \(sector.lbaBegin)")
+        
+        case let sector as Fat12Bootsector :
+            print("Fat12Bootsector detected")
 
         case _ as EmptySector :
             print ("Empty sector detected")
@@ -122,19 +129,37 @@ extension FAT32 {
         if let data = value {
             let size = data.count
             var i = size
+            var end = 0
+            var start = 0
             for _ in data {
-                if i == 0{
+                if i <= 0{
                     break
                 }
-                let x =  String(format:"%02X", UInt(data[size-i]))
-                print ("\(x) ", terminator: "")
-                if i % 17 == 0 {
-                    print ("")
+                for _ in 0..<16 {
+                    start += 1
+                    let x =  String(format:"%02X", UInt(data[size-i]))
+                    print ("\(x) ", terminator: "")
+
+                    if (i == 0) {
+                        break
+                    }
+                    i -= 1
+                    end += 1
                 }
-                i -= 1
+                let subdata = data.subdata(in: start-end..<start)
+                var printString = String(decoding: subdata, as: Unicode.ASCII.self)
+                //printString = printString.replacingOccurrences(of: "\n", with: ".", options: NSString.CompareOptions.literal, range: nil)
+                printString = printString.replacingOccurrences(of: "\n", with: ".")
+                printString = printString.replacingOccurrences(of: "\r", with: ".")
+                printString = printString.replacingOccurrences(of: "\t", with: ".")
+                printString = printString.replacingOccurrences(of: "\u{07}", with: ".")
+                printString = printString.replacingOccurrences(of: "\u{0B}", with: ".")
+                printString = printString.replacingOccurrences(of: "\u{00}", with: "\u{001b}[33m•\u{001b}[0m")
+                print (" : \(printString)")
+                
+                end = 0
             }
         }
-        print ("")
     }
 }
 
